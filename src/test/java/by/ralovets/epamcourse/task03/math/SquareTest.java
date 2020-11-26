@@ -1,12 +1,12 @@
 package by.ralovets.epamcourse.task03.math;
 
+import by.ralovets.epamcourse.task03.math.exception.SquareException;
 import org.junit.Test;
 
 import static by.ralovets.epamcourse.task03.math.Square.getSideFromArea;
 import static by.ralovets.epamcourse.task03.math.Square.getSideFromDiagonal;
 import static java.lang.Math.abs;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class SquareTest {
 
@@ -20,9 +20,8 @@ public class SquareTest {
             double expected = 25;
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -34,9 +33,8 @@ public class SquareTest {
             double expected = 10000;
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -48,9 +46,8 @@ public class SquareTest {
             double expected = 50;
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -62,9 +59,8 @@ public class SquareTest {
             double expected = 18;
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -75,9 +71,8 @@ public class SquareTest {
             double expected = 4;
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -88,9 +83,8 @@ public class SquareTest {
             double expected = 6;
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -99,9 +93,8 @@ public class SquareTest {
         try {
             getSideFromArea(0);
             fail();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            assertTrue(true);
+        } catch (SquareException e) {
+            assertEquals(Square.NOT_POSITIVE_AREA_MSG, e.getMessage());
         }
     }
 
@@ -110,9 +103,8 @@ public class SquareTest {
         try {
             getSideFromArea(-10);
             fail();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            assertTrue(true);
+        } catch (SquareException e) {
+            assertEquals(Square.NOT_POSITIVE_AREA_MSG, e.getMessage());
         }
     }
 
@@ -123,9 +115,8 @@ public class SquareTest {
             double expected = 16 / Math.sqrt(2);
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -136,9 +127,8 @@ public class SquareTest {
             double expected = 36 / Math.sqrt(2);
 
             assertTrue(abs(expected - actual) <= EPS);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            fail();
+        } catch (SquareException e) {
+            fail(e.getMessage());
         }
     }
 
@@ -147,9 +137,8 @@ public class SquareTest {
         try {
             getSideFromDiagonal(0);
             fail();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            assertTrue(true);
+        } catch (SquareException e) {
+            assertEquals(Square.NOT_POSITIVE_DIAGONAL_MSG, e.getMessage());
         }
     }
 
@@ -158,9 +147,28 @@ public class SquareTest {
         try {
             getSideFromDiagonal(-10);
             fail();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            assertTrue(true);
+        } catch (SquareException e) {
+            assertEquals(Square.NOT_POSITIVE_DIAGONAL_MSG, e.getMessage());
+        }
+    }
+
+    @Test
+    public void squareTest01() {
+        try {
+            new Square(0);
+            fail();
+        } catch (SquareException e) {
+            assertEquals(Square.NOT_POSITIVE_SIDE_MSG, e.getMessage());
+        }
+    }
+
+    @Test
+    public void squareTest02() {
+        try {
+            new Square(-10);
+            fail();
+        } catch (SquareException e) {
+            assertEquals(Square.NOT_POSITIVE_SIDE_MSG, e.getMessage());
         }
     }
 }

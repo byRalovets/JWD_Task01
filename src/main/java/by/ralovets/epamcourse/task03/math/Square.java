@@ -4,11 +4,11 @@ import by.ralovets.epamcourse.task03.math.exception.SquareException;
 
 public class Square {
 
-    private static final String NOT_POSITIVE_SIDE_MSG
+    public static final String NOT_POSITIVE_SIDE_MSG
             = "Сторона квадрата должна быть больше 0";
-    private static final String NOT_POSITIVE_AREA_MSG
+    public static final String NOT_POSITIVE_AREA_MSG
             = "Площадь квадрата должна быть больше 0";
-    private static final String NOT_POSITIVE_DIAGONAL_MSG
+    public static final String NOT_POSITIVE_DIAGONAL_MSG
             = "Диагональ квадрата должна быть больше 0";
     private final double area;
     private final double side;
